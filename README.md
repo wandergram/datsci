@@ -3,4 +3,4 @@
 Includes:
 
 * readme.md
-* Class 2 homework
+* [Class 2 homework](../blob/master/class2/homework.md)
