@@ -1,2 +1,5 @@
-# datsci
-GA DAT7 coursework repo
+# datsci - GA DAT7 coursework repo
+
+Includes:
+
+* readme.md
