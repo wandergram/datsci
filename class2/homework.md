@@ -83,5 +83,6 @@ grep -i "chips" chipotle.tsv | wc -l
 ```
 awk '{ sum += $2; n++ } END { if (n > 0) print sum / n; }' chipotle.tsv
 ```
+*ETA*: using csvstat explained why awk wasn't working; item_price is `<type 'unicode'>`, whereas order_id & quantity are `<type 'int'>`. 
 
 
