@@ -17,7 +17,7 @@ In the example datasets provided above (pop_gnp.xls, life_ruralpop.xls), I use g
 
 For the static data example (state failure and nuclear safeguards), see the end of this document.
 
-Good data sources for similar stats include [Data.UN.org](http://data.un.org) & [Data.WorldBank.org](http://data.worldbank.org)
+Good data sources for similar stats include [data.un.org](http://data.un.org) & [data.worldbank.org](http://data.worldbank.org)
 
 Collect your data in a spreadsheet application such as Excel.
 
