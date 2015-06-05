@@ -31,13 +31,11 @@ Collect your data in a spreadsheet application such as Excel.
 **Clean data**: 
 
 * Your data cannot have #NULL! values in any of the cells. You should replace the #NULL! values with a blank; if they're replaced with a dot or a dash, Motion Chart won't work, and if they’re replaced with zeros, the dynamics of the data will be skewed. 
-
 * All columns have to be formatted in the "General" format in Excel, otherwise Google Sheets will tell you it can't read the data for Motion Chart.
 
 **Upload data**:
 
 * Upload your Excel file to Google Docs, then select "Open with Google Sheets". You'll need to work in Sheets.
-
 * Try to keep the file size under 1MB.
 
 **Adding Motion Chart**:
