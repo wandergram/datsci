@@ -4,3 +4,4 @@ Includes:
 
 * readme.md
 * [Class 2 homework](../master/class2/homework.md)
+* [Motion Chart instructions & examples](../master/motionchart/)
