@@ -8,7 +8,7 @@ To get the best results, you'll want time series data for a relatively long list
 
 *If you only have data for one year or one point in time, you can still use Motion Chart for a cool visualization - more on this below.*
 
-In the example datasets provided above (pop_gnp.xls, life_ruralpop.xls), I use global time series data for:
+In the example datasets provided above (*pop_gnp.xls*, *life_ruralpop.xls*), I use global time series data for:
 
 * life expectancy and rural population as percentage of total between 1946 and 2006, and
 * raw population figures and raw GNP figures between 1963 and 1993. 
