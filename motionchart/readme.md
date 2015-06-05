@@ -50,7 +50,7 @@ Collect your data in a spreadsheet application such as Excel.
 
 * Set color and size properties by variable.
 * Select particular entities.
-* If "trails" is selected, you can click on one circle and track its movement relative to the rest.
+* If "trails" is selected, you can click on one or more circles and track their movement relative to the rest.
 
 **Examples**:
 
