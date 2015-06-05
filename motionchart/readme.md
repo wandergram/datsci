@@ -2,8 +2,6 @@
 
 Motion Chart is a great data visualization tool that can help you analyze your data in new and exciting ways. Watch [this TED talk by Hans Rosling](http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen?language=en#t-283227) to see it in action. Here's how to create your own.
 
-**Instructions**:
-
 **Collect data**: 
 
 To get the best results, you'll want time series data for a relatively long list of entities (countries, states, cities, companies, etc). 
