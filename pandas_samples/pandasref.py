@@ -204,22 +204,28 @@ ufo_cols = ['city', 'color', 'shape', 'state', 'time']
 ufo = pd.read_csv('ufo.csv', header=0, names=ufo_cols)  
 ufo.columns = ufo_cols
 
+# can also just do ufo.columns = [ blah blah blah ]
+# [col.replace(" ", "_") for col in ufo.columns]
+# ufo.columns = [col.replace(" ", "") for col in ufo.columns]
+
 
 # what are the three most common colors reported?
-ufo.color.value_counts() # by default excludes missing values 
+ufo.color.value_counts() # by default excludes missing values
+ufo.color.value_counts().head(3) # only top three
 
 # rename any columns with spaces so that they don't contain spaces
 # done above
 
 # for reports in VA, what's the most common city?
 
-ufo[(ufo.state=="VA")].city.value_counts()
+ufo[(ufo.state=="VA")].city.value_counts().head(1)
 
 # print a DataFrame containing only reports from Arlington, VA
 ufo[(ufo.state=="VA") & (ufo.city=="Arlington")]
 
 # count the number of missing values in each column
-ufo.isnull().sum() 
+ufo.isnull().sum()
+# generates Dataframe with Booleans
 
 # how many rows remain if you drop all rows with any missing values?
 len(ufo) - len(ufo.dropna())
