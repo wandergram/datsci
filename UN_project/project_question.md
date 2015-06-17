@@ -23,7 +23,7 @@ If successful, the model could also be applied to the analysis of other types of
 
 **Data**
 
-For the primary portion of the project, I plan to use the text of 1,644 Security Council resolutions from January 1986 through June 2015 available on the [UN website](http://www.un.org/en/sc/documents/resolutions/) 
+For the primary portion of the project, I plan to use the text of 1,644 Security Council resolutions from January 1986 through June 2015 available on the [UN website](http://www.un.org/en/sc/documents/resolutions/). 
 
 The timeframe was chosen on the following bases: 
 
