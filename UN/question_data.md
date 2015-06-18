@@ -1,9 +1,7 @@
 ##Tower of Babble? 
 ### Predicting (in)action by the UN Security Council by parsing “UNish”
 
-It has been hypothesized that the UN, led by the Security Council, does nothing. In fact, “does the UN… do anything” is among the top predictive search suggestions offered by Google. Every year, hundreds of articles are published decrying ineffectiveness, bottlenecking, apathy, and political plays on the part of the UN, all of which appear to result in a damning lack of regard for populations affected by crises. 
-
-As the UN’s primary decisionmaking body, the Security Council has borne the brunt of this criticism. Security Council resolutions “demanding an immediate end to hostilities” but resulting in little concrete action have generated biting satire. Some of the Council’s decisions, such as drawing down peacekeepers amidst a genocide, have surprised even the most forgiving of UN sympathizers.
+It has been hypothesized that the UN, led by the Security Council, does nothing. In fact, “does the UN… do anything” is among the top predictive search suggestions offered by Google. Every year, hundreds of articles are published decrying bottlenecking, apathy, and political plays on the part of the UN. As the UN’s primary decisionmaking body, the Security Council has borne the brunt of this criticism. Security Council resolutions “demanding an immediate end to hostilities” but resulting in little concrete action have generated biting satire. Some of the Council’s decisions, such as drawing down peacekeepers amidst a genocide, have surprised even the most forgiving of UN sympathizers, including myself.
 
 **Project Question**
 
