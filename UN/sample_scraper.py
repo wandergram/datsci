@@ -1,9 +1,16 @@
-# working on a script that would loop through all years btween 1994-2015
+# Working on a script that would loop through all years btween 1994-2015.
+# The purpose of this script is just to assemble a CSV file of all meeting records
+# and corresponding outcomes (resolutions). The files containing text to be analyzed
+# are being downloaded manually. I wrote several catch-all bash scripts to try to automate 
+# this process; unfortunately, the UN document system portal restricts access
+# to its documents for these types of scripts. 
 
 import sys
 
 reload(sys)
 sys.setdefaultencoding('utf8')
+
+# used to handle special Latin characters
 
 import csv
 import requests
