@@ -49,7 +49,7 @@ for num in range(1994,2016):
 # Step 2.
 # Concatenates CSV files:
 
-fout = open("fulllist.csv","a")
+fout = open("record_list.csv","a")
 # First file:
 for line in open("cells1994.csv"):
     fout.write(line)
@@ -67,7 +67,7 @@ fout.close()
 # Step 3. 
 # Read in resulting (full) CSV file, add headers:
 recs_cols = ['record', 'day', 'press_release', 'topic', 'outcome']
-recs = pd.read_table('fulllist.csv', sep=',', header=None, names=recs_cols)
+recs = pd.read_table('record_list.csv', sep=',', header=None, names=recs_cols)
 
 # Check CSV file:
 recs.head()
