@@ -38,7 +38,7 @@ import pandas as pd
  
 # Read in the starting CSV file, add headers to the dataframe:
 recs_cols = ['record', 'day', 'press_release', 'topic', 'outcome']
-recs = pd.read_table('record_list_sorted_2.csv', sep=',')
+recs = pd.read_table('record_list_sorted_copy.csv', sep=',')
 
 # Check dataframe:
 recs.head()  
