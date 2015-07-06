@@ -7,6 +7,7 @@ Includes:
 * [Chipotle data - lists, dictionaries](../master/class3/chipotle_homework.py)
 * [Pandas](../master/class5/pandas_homework_imdb.py)
 * [Scraping](../master/class7)
+* [Linear regression & KNN] (../master/class10)
 * [Pandas practice](../master/pandas_samples) 
 	* Preliminary UN data & code (pandas)
 	* French election data & code (pandas, matplotlib)
