@@ -9,7 +9,7 @@ Created on Thu Jul  9 21:56:02 2015
 
 import nltk
 from nltk.corpus import PlaintextCorpusReader
-corpus_root = 'Desktop/unscr_texts'
+corpus_root = 'Desktop/datsci/corpus/unscr'
 scrs = PlaintextCorpusReader(corpus_root, '.*')
 scrs.fileids()
 
