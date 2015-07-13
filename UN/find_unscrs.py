@@ -119,7 +119,7 @@ find_files(sanctions, "economic activities carried on, after the date of adoptio
 soft = "11"
 prohib = "22"
 hard = "33"
-extend = "4-"
+extend = "44"
 hard_neg = "55" # mission drawdown
 prohib_neg = "66" # sanctions cancellation
 soft_neg = "77" # observer handover
