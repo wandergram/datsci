@@ -116,19 +116,30 @@ find_files(sanctions, "economic activities carried on, after the date of adoptio
    
 # define rules for renaming
 # define bin numbers
-soft = "1"
-prohib = "2"
-hard = "3"
-extend = "4"
-hard_neg = "5" # mission drawdown
-prohib_neg = "6" # sanctions cancellation
-soft_neg = "7" # observer handover
+soft = "11"
+prohib = "22"
+hard = "33"
+extend = "4-"
+hard_neg = "55" # mission drawdown
+prohib_neg = "66" # sanctions cancellation
+soft_neg = "77" # observer handover
 
 # everything else will be read as "no action"
 
 # copied all UNSCRs in working dir to other dir in case this blows up!
 
+# renaming the resolutions that deal with mission extensions
+import os
+for filename in os.listdir("."):
+    if filename in mission_extend:
+        os.rename(filename, extend+filename)
+        print filename
 
-
+# defining function to rename files by previously assembled list
+def rename_files(list_name, var_name):
+    for filename in os.listdir("."):
+        if filename in list_name:
+            os.rename(filename, var_name+filename)
+            print filename
 
    
