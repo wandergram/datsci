@@ -73,6 +73,8 @@ for filename in glob.glob('*.txt'):
 print deploy
             
 # define a single function for this
+# find expression in file, append to list
+            
 def find_files(lists, expressions):
     for filename in glob.glob('*.txt'):
         for line in open(filename):
@@ -142,4 +144,20 @@ def rename_files(list_name, var_name):
             os.rename(filename, var_name+filename)
             print filename
 
-   
+# rename files referencing hard measures
+rename_files(list_of_ch7, hard)
+
+# rename files referencing mission drawdown
+rename_files(drawdown, hard_neg)
+
+# rename files referencing embargoes
+rename_files(embargoes, prohib)
+
+# explore travel ban-related resolutions
+explore("prevent the entry into or transit through their territories")  
+# create travel ban list
+travel_ban = []
+find_files(travel_ban, "prevent the entry into or transit through their territories") 
+
+# rename files
+rename_files(travel_ban, prohib)
