@@ -264,7 +264,13 @@ copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft",
 copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "fund")  
 copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "office")    
 
-
+'''
+Next steps:
+1. Using previously assembled CSV file, match resolutions by number to category
+2. Match meeting records to category of corresponding resolution
+3. Using Reuters corpus as a template, categorize meeting records by "bin"
+4. Select model(s), train & test 
+'''
 
 
 
