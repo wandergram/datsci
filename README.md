@@ -8,6 +8,7 @@ Includes:
 * [Pandas](../master/class5/pandas_homework_imdb.py)
 * [Scraping](../master/class7)
 * [Linear regression & KNN] (../master/class10)
+* [Naive Bayes & Yelp text data] (../master/class14)
 * [Pandas practice](../master/pandas_samples) 
 	* Preliminary UN data & code (pandas)
 	* French election data & code (pandas, matplotlib)
