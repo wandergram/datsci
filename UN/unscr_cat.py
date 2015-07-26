@@ -11,7 +11,9 @@ resolutions (SCRs) (outputs), 2) find files of interest, 3) determine how to cat
 In the corpus, the filenames follow the format of YYYY-NDOCNUMB.txt, 
 e.g. 1994-N1234567.txt
 
-Working directory: unscr3/
+Clean files in unscrs_clean.zip
+Renamed files in unscrs_renamed.zip
+Categorized files in unscrs_renamed_categorized.zip
 '''
 
 
@@ -22,14 +24,16 @@ import glob
 # Here I define a function to explore the text of the documents to validate my logic.
 # This is a quick way to understand in what collocations phrases are typically used
 # and what kinds of topics they tend to reference. 
+
+# Files contained in unscrs_clean.zip
+
 def explore(strings):
     for filename in glob.glob('*.txt'):
         for line in open(filename):
             if strings in line:
                 print line
                 print filename # becomes very useful later to see which kinds of files the text is found in
-                
-# print line.count(line) - return to this
+    
 
 # For example, actions the SC authorizes:
 explore("authorizes")
@@ -97,7 +101,7 @@ drawdown = "drawdown_" # mission drawdown, termination of previously imposed mea
 suspend = "suspend_" # suspend prohibitions
 
 # Everything else will be read as "no action taken". Currently this seems to be
-# about 280 documents out of the corpus (1,250 total).
+# about 280 documents out of the corpus (~1,250 total).
 
 # 4. Rename the files by category, based on whether their filenames are in a given topical list:
 def rename_files(list_name, var_name):
@@ -115,6 +119,7 @@ explore("extend the present mandate")
 explore("extend its mandate")
 explore("decides to extend")
 explore("Approves the continuation of")
+
 mission_extend = []
 find_files(mission_extend, "renew the mandate")
 find_files(mission_extend, "extend its mandate")
@@ -135,6 +140,7 @@ rename_files(mission_extend, extend)
 # II. Mission Drawdown
 explore("drawdown")
 explore("terminate the mandate of")
+
 mission_drawdown = []
 find_files(mission_drawdown, "drawdown")
 find_files(mission_drawdown, "gradual reduction of")
@@ -142,14 +148,15 @@ find_files(mission_drawdown, "Decides to withdraw U")
 find_files(mission_drawdown, "liquidation")
 find_files(mission_drawdown, "terminate the mandate of")
 
-
 explore("Decides to terminate the prohibitions")
 explore("Decides to terminate the remaining prohibitions")
+
 suspend_prohib = []
 find_files(suspend_prohib, "Decides to terminate the prohibitions")
 find_files(suspend_prohib, "Decides to terminate the remaining prohibitions")
 
 rename_files(mission_drawdown, drawdown)
+
 rename_files(suspend_prohib, suspend)
 
 # III. Deployment/Authorization to act under Chapter VII
@@ -174,8 +181,7 @@ find_files(transit_ban, "prevent the entry into or transit through their territo
 rename_files(transit_ban, ban)
 find_files(transit_ban, "States shall prevent")
 rename_files(transit_ban, ban)
-# note that these are mostly Chapter VII measures, but including them alongside
-# full-scale missions may not be correct from a methodological perspective
+# note that these are mostly measures that go hand in hand with Chapter VII missions.
 
 explore("the measures on arms")
 arms_embargo = []
@@ -206,84 +212,54 @@ explore("States shall prevent")
 explore("increase the overall force levels")
 explore("disarmament, demobilization and reintegration")
 explore("targeted sanctions")
-explore("Requests the Secretary-General to establish the")
 explore("use all necessary means")
 
-# 5. Separate files into folders by category
+# Renamed files saved in unscrs_renamed.zip
+
+# 5. Separate files into one of two folders by category
 # Define a function for this
 import shutil
-source = r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed"
-destination = r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/extensions"
+source = r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed"
+destination = r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed/chapter_7"
 
-category_terms = ["police", "emb", "adv_team", "mil_observ", "transit_ban", "experts", "fund", "office", "ch7", "extend", "drawdown", "suspend"]
-
-def copy_files(destination, word):
+def move_files(destination, word):
     if not os.path.exists(destination):
         os.makedirs(destination)               
     for f in os.listdir(source):
         if word in f:
-            shutil.copy(os.path.join(source,f), destination)
-'''
-For reference:
-# Thematic organization
-# Soft measures
-police = "police_" # civilian police component
-embargo = "emb_" # embargoes
-adv_team = "adv_team_" # advance teams
-observers = "mil_observ_" # military observers
-ban = "transit_ban_" # transit ban - sanctions
-experts = "experts_" # establishment of panels of experts
-fund = "fund_" # establishment of trust fund for operations
-office = "office_"
+            shutil.move(os.path.join(source,f), destination)
 
-# Chapter VII mission
-chapter7 = "ch7_" # deployment of missions with military personnel under Chapter VII
+# Move all files whose filenames contain "ch7" to a folder called "chapter_7"
+move_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed_categorized/chapter_7", "ch7") # 523 files
 
-# Mission extension
-extend = "extend_" # extending mission mandates
-
-# Drawdown, reversal of measures
-drawdown = "drawdown_" # mission drawdown, termination of previously imposed measures
-suspend = "suspend_" # suspend prohibitions
-'''
-
-# mission extensions
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/extensions", "extend")
-
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/chapter_7_mission", "ch7")
-        
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/drawing_down", "drawdown")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/drawing_down", "suspend")  
-
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "police")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "emb")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "adv_team")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "mil_observ")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "transit_ban")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "experts")
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "fund")  
-copy_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed/measures_soft", "office")    
+# Move all other files to a folder called "soft_action"
+# Use the first digit of the year contained in the filename to select and move these files
+move_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed_categorized/soft_action", "1")
+move_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed_categorized/soft_action", "2")
+# total: 780 files
 
 '''
 Next steps:
-1. Using previously assembled CSV file, match resolutions by number to category
-2. Match meeting records to category of corresponding resolution
-3. Using Reuters corpus as a template, categorize meeting records by "bin"
-4. Select model(s), train & test 
+1. Using previously assembled CSV file, match resolutions by number to category: 
+- create a new "category" column 
+- read resolution files using glob
+- each file will contain the resolution number
+- if the file is in the folder "soft_action", write "0" to the corresponding cell in the "category" column
+- if the file is in the folder "ch7", write "1" 
+- for all others, write "NaN" and drop with pandas
+2. Read the text of each input (meeting record) into the corresponding cell in a new dataframe column
+3. Select model(s), train & test 
 '''
 
+# Testing the creation of a categorized corpus reader on UNSCRs only
+from nltk.corpus.reader import CategorizedPlaintextCorpusReader
+reader = CategorizedPlaintextCorpusReader('/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed_categorized/', r'.*\.txt', cat_pattern=r'(\w+)/*')
 
+reader.categories() 
 
+categories = reader.categories()
 
-
-
-
-
-
-
-
-
-
-
+# see http://stackoverflow.com/questions/15611328/how-to-save-a-custom-categorized-corpus-in-nltk?lq=1 
+# for corpus installation instructions
 
 
