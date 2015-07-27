@@ -220,7 +220,7 @@ explore("use all necessary means")
 # Define a function for this
 import shutil
 source = r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed"
-destination = r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed/chapter_7"
+destination = r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed/intervention"
 
 def move_files(destination, word):
     if not os.path.exists(destination):
@@ -229,8 +229,8 @@ def move_files(destination, word):
         if word in f:
             shutil.move(os.path.join(source,f), destination)
 
-# Move all files whose filenames contain "ch7" to a folder called "chapter_7"
-move_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed_categorized/chapter_7", "ch7") # 523 files
+# Move all files whose filenames contain "ch7" to a folder called "intervention"
+move_files(r"/Users/alex/Desktop/datsci/UN/corpus/unscrs_renamed_categorized/intervention", "ch7") # 523 files
 
 # Move all other files to a folder called "soft_action"
 # Use the first digit of the year contained in the filename to select and move these files
@@ -251,15 +251,5 @@ Next steps:
 3. Select model(s), train & test 
 '''
 
-# Testing the creation of a categorized corpus reader on UNSCRs only
-from nltk.corpus.reader import CategorizedPlaintextCorpusReader
-reader = CategorizedPlaintextCorpusReader('/Users/alex/Desktop/datsci/UN/corpus/unscr3_renamed_categorized/', r'.*\.txt', cat_pattern=r'(\w+)/*')
-
-reader.categories() 
-
-categories = reader.categories()
-
-# see http://stackoverflow.com/questions/15611328/how-to-save-a-custom-categorized-corpus-in-nltk?lq=1 
-# for corpus installation instructions
 
 
