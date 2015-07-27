@@ -20,7 +20,6 @@ I tried a few different bash scripts, but none worked and I nearly overwrote
 all of my files (a good reminder to make 67 backups).
 For Mac OSX, I used an app called TEConverter to batch convert to UTF-8. 
 '''
-
 # plots conditional frequency distributions of words across years
 
 # genocide, atrocities, massacres, cleansing
@@ -33,3 +32,12 @@ cfd = nltk.ConditionalFreqDist(
 
 cfd.plot()
 
+# demands
+cfd = nltk.ConditionalFreqDist(
+    (target, fileid[:4]) # separates the years out of the filenames for the X axis
+    for fileid in pvs.fileids()
+    for w in pvs.words(fileid)
+    for target in ['demand'] 
+    if w.lower().startswith(target))
+
+cfd.plot()
