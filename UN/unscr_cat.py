@@ -245,7 +245,7 @@ Next steps:
 - read resolution files using glob
 - each file will contain the resolution number
 - if the file is in the folder "soft_action", write "0" to the corresponding cell in the "category" column
-- if the file is in the folder "ch7", write "1" 
+- if the file is in the folder "intervention", write "1" 
 - for all others, write "NaN" and drop with pandas
 2. Read the text of each input (meeting record) into the corresponding cell in a new dataframe column
 3. Select model(s), train & test 
