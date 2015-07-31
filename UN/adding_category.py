@@ -80,12 +80,15 @@ newrecords = pd.read_table('final_clean_records_new.csv', sep=',')
 for filename in glob.glob('corpus/unscrs_renamed_categorized/soft_action/*.txt'):
     with open(filename, 'r') as f:
         for line in f:
-            newrecords[newrecords['outcome'] == line]['category'] = 0
+            list_words = line.split(' ')
+            newrecords[newrecords['outcome'] == list_words[:]]['category'] = 0
             
 for filename in glob.glob('corpus/unscrs_renamed_categorized/intervention/*.txt'):
     with open(filename, 'r') as f:
         for line in f:
             newrecords[newrecords['outcome'] == line]['category'] = 1
+            
+
 
 
 
