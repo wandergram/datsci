@@ -80,28 +80,45 @@ full_clean_records.to_csv('final_clean_records_new_2.csv', index=False)
 newrecords_cols = ['record', 'day', 'press_release', 'topic', 'year', 'category', 'outcome']
 newrecords = pd.read_table('final_clean_records_new_2.csv', sep=',')
 
+'''
 # Begin filling in "category" column with 0 for resolutions that fall under soft actions 
 # and 1 for resolutions that fall under interventions.
 # The glob module here reads the files, finds the corresponding document number,
 # matches it against the value of the outcome column, and sets the value in the category column
 # to 0 or 1.
 
-for filename in glob.glob('corpus/unscrs_renamed_categorized/soft_action/*.txt'):
-    with open(filename, 'r') as f:
-        for line in f:
-            if line == newrecords[newrecords['outcome']]:
+# Had to discard this code after more work with the text;
+# the way the text is structured, there is no pythonic logic that would fit and work here.
+# Categorizing manually...
+
+for i in range(1284):
+    for filename in glob.glob('corpus/unscrs_renamed_categorized/soft_action/*.txt'):
+        with open(filename, 'r') as f:
+            for line in f:
+                if line == newrecords['outcome'][i]:
+                    print line
+                
+                
                 newrecords['category'] = 0
             
-for filename in glob.glob('corpus/unscrs_renamed_categorized/intervention/*.txt'):
-    with open(filename, 'r') as f:
-        for line in f:
-            newrecords[newrecords['outcome'] == line]['category'] = 1
-            
+list_of_res = []
+for i in range(1283):
+    x = newrecords['outcome'][i]
+    list_of_res.append(x)
 
+# changed working directory to unscrs_renamed_categorized/soft_action/*.txt because
+# glob was acting up for a moment
 
+list_of_soft = []
+for filename in glob.glob('*.txt'):
+        for line in open(filename):
+            if "S/RES/" in line:
+                print line
+                list_of_soft.append(line)
 
-
-
-
+len(list_of_soft)
+set(list_of_soft)
+len(set(list_of_soft))
+'''
 
 
