@@ -12,7 +12,6 @@ list_of_pvs = []
 for filename in glob.glob('*.txt'):
     list_of_pvs.append(filename)
 
-
 # working dir: UN
 # create list of category values
 recs = pd.read_table('clean_records_copy.csv', sep=',')
@@ -33,11 +32,11 @@ destination = r"/Users/alex/Desktop/datsci/UN/corpus/meeting_records_final_categ
 
 def move_files(destination, cat):
     if not os.path.exists(destination):
-        os.makedirs(destination)               
-    for key, value in dictionary.iteritems():
-        for f in os.listdir(source):
-            if key in dictionary == f:
-                if value == cat:
+        os.makedirs(destination) 
+    for f in os.listdir(source):             
+        for key, value in dictionary.iteritems():
+            if key == f:
+                if value == int(cat): 
                     shutil.move(os.path.join(source,f), destination)
 
 # Move all files whose category is 0 to a folder called "soft_action"
