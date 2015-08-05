@@ -36,9 +36,9 @@ len(list_of_pvs) #1229
 listpvs = pd.Series(list_of_pvs)
 listframe = listpvs.to_frame('recnum') # here I write to a df and set "recnum" as the column name
 
-listdf1 = listframe['recnum'].apply(lambda x: pd.Series(str(x).split('-')))
+listdf1 = listframe['recnum'].apply(lambda x: pd.Series(str(x).split('-'))) # drops year from front of filename
 listdf1.drop(0, axis=1, inplace = True)
-listdf2 = listdf1[1].apply(lambda x: pd.Series(str(x).split('.')))
+listdf2 = listdf1[1].apply(lambda x: pd.Series(str(x).split('.'))) # drops .txt from end of filename
 listdf2.drop(1, axis=1, inplace = True)
 
 listdf2.rename(columns={0: 'recnum'}, inplace = True)
