@@ -16,8 +16,8 @@ for filename in glob.glob('*.txt'):
          f.close()
          
 len(list_of_meetings) #1236 ^^ THIS WORKED! It's slow, but it worked!
-# still contains \n though - will ask about this
 
+# clean list
 list_of_meetings = [x.replace('\n', ' ') for x in list_of_meetings]
 list_of_meetings = [x.replace('_', ' ') for x in list_of_meetings]
 
