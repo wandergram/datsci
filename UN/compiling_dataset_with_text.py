@@ -25,8 +25,19 @@ meetingseries = pd.Series(list_of_meetings)
 # create DF from Series
 meetingframe = meetingseries.to_frame('meeting_text') # create df, name column "meeting_text"
 
+# set index for dataframe merge
+meetingframe['id'] = meetingframe.index
 
+# read in working CSV file
+# working dir: UN/
+recs = pd.read_table('clean_records_copy.csv', sep=',')
 
+# set index for df merge
+recs['id'] = recs.index
 
+# Merge on 'id'
+full_data = pd.merge(recs, meetingframe)
          
+# drop 'id' column
+full_data.drop('id', axis=1, inplace=True)
          
