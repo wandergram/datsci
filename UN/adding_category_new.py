@@ -87,9 +87,9 @@ newrecords = pd.read_table('final_clean_records_new_2.csv', sep=',')
 # matches it against the value of the outcome column, and sets the value in the category column
 # to 0 or 1.
 
-# Had to discard this code after more work with the text;
+# Had to discard this approach after more work with the text;
 # the way the text is structured, there is no pythonic logic that would fit and work here.
-# Categorizing manually...
+# Categorizing manually with some help from Python below...
 
 for i in range(1284):
     for filename in glob.glob('corpus/unscrs_renamed_categorized/soft_action/*.txt'):
@@ -97,28 +97,33 @@ for i in range(1284):
             for line in f:
                 if line == newrecords['outcome'][i]:
                     print line
-                
-                
-                newrecords['category'] = 0
             
 list_of_res = []
 for i in range(1283):
     x = newrecords['outcome'][i]
     list_of_res.append(x)
 
-# changed working directory to unscrs_renamed_categorized/soft_action/*.txt because
-# glob was acting up for a moment
+# changed working directory to unscrs_renamed_categorized
+
+'''
+
+import linecache
 
 list_of_soft = []
-for filename in glob.glob('*.txt'):
-        for line in open(filename):
-            if "S/RES/" in line:
-                print line
-                list_of_soft.append(line)
-
-len(list_of_soft)
+for filename in glob.glob('soft_action/*.txt'):
+    x = linecache.getline(filename, 6)
+    list_of_soft.append(x)
+        
+# Testing
+len(list_of_soft) 
 set(list_of_soft)
 len(set(list_of_soft))
-'''
+
+list_of_intervention = []
+for filename in glob.glob('intervention/*.txt'):
+    x = linecache.getline(filename, 6)
+    list_of_intervention.append(x)
+    
+len(list_of_intervention) # 
 
 
