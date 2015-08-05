@@ -18,6 +18,10 @@ for filename in glob.glob('*.txt'):
 len(list_of_meetings) #1236 ^^ THIS WORKED! It's slow, but it worked!
 # still contains \n though - will ask about this
 
+list_of_meetings = [x.replace('\n', ' ') for x in list_of_meetings]
+list_of_meetings = [x.replace('_', ' ') for x in list_of_meetings]
+
+
 # create Series from list 
 import pandas as pd
 meetingseries = pd.Series(list_of_meetings)
@@ -42,8 +46,8 @@ full_data = pd.merge(recs, meetingframe)
 full_data.drop('id', axis=1, inplace=True)
 
 # Write to new CSV file
-# full_data.to_csv('full_dataset.csv', index=False, sep = ',') # this gets really screwed up
-# how to write clean to CSV?
+# full_data.to_csv('full_dataset.csv', index=False)
+
 
 ''' PART 1 - Train Test Split, Naive Bayes, SKLEARN'''
 
