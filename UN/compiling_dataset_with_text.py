@@ -113,9 +113,6 @@ metrics.accuracy_score(y_test, y_pred_class_n)
 # 70% with ngram_range 1,5, stopwords included
 
 
-#4.4b Use CountVectorizer with job_title of the author only
-train_dtm_jt = vect.fit_transform(X_train[:, 1])
-test_dtm_jt = vect.transform(X_test[:, 1])
 
 
 
