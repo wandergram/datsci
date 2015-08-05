@@ -91,11 +91,32 @@ X_test[y_test < y_pred_class]
 # false negatives
 X_test[y_test > y_pred_class]
 
-''' PART 2 - NTLK '''
-# assemble corpus
-# save corpus
-# load corpus
-# train classifier
+''' PART 2 '''
+
+#CountVectorizer with ngrams
+vect2 = CountVectorizer(ngram_range=(1,5), stop_words = 'english', min_df=2)
+train_dtm_n = vect2.fit_transform(X_train)
+test_dtm_n = vect2.transform(X_test)
+
+nb = MultinomialNB()
+nb.fit(train_dtm_n, y_train)
+
+y_pred_class_n = nb.predict(test_dtm_n)
+
+# Calculate accuracy
+metrics.accuracy_score(y_test, y_pred_class_n) 
+
+# 57% for ngram_range 1,2
+# 66% with ngram_range 2,3 
+# 69% with ngram_range 2,5
+# 74% with ngram_range 2,5, stopwords included
+# 70% with ngram_range 1,5, stopwords included
+
+
+#4.4b Use CountVectorizer with job_title of the author only
+train_dtm_jt = vect.fit_transform(X_train[:, 1])
+test_dtm_jt = vect.transform(X_test[:, 1])
+
 
 
 
