@@ -95,10 +95,13 @@ X_test[y_test < y_pred_class]
 # false negatives
 X_test[y_test > y_pred_class]
 
+# many more false positives, very few false negatives
+# high sensitivity, low specificity
+
 ''' PART 2 '''
 
 #CountVectorizer with ngrams
-vect2 = CountVectorizer(ngram_range=(1,5), stop_words = 'english', min_df=2)
+vect2 = CountVectorizer(ngram_range=(5,5), stop_words = 'english', min_df=2)
 train_dtm_n = vect2.fit_transform(X_train)
 test_dtm_n = vect2.transform(X_test)
 
@@ -115,40 +118,57 @@ metrics.accuracy_score(y_test, y_pred_class_n)
 # 69% with ngram_range 2,5
 # 74% with ngram_range 2,5, stopwords included
 # 70% with ngram_range 1,5, stopwords included
+# 75% with ngram_range 5,5, stopwords included
+
+nb.predict(test_dtm_n[72]) # this alone won't access the feature.
+# only the ordinal in the numpy array
 
 print vect2.get_feature_names()[-50:]
 
+# Got this code off of Stack Overflow
+# http://stackoverflow.com/questions/11116697/how-to-get-most-informative-features-for-scikit-learn-classifiers
+# Used to get most informative features for linear models in scikit-learn
+def show_most_informative_features(vect2, nb, n=20):
+    feature_names = vect2.get_feature_names()
+    coefs_with_fns = sorted(zip(nb.coef_[0], feature_names))
+    top = zip(coefs_with_fns[:n], coefs_with_fns[:-(n + 1):-1])
+    for (coef_1, fn_1), (coef_2, fn_2) in top:
+        print "\t%.4f\t%-15s\t\t%.4f\t%-15s" % (coef_1, fn_1, coef_2, fn_2)
+        
+print show_most_informative_features(vect2, nb)
+
+'''
+        -11.9945        000 people lost lives endless           -5.1121 kingdom great britain northern ireland
+        -11.9945        04 2014 meeting called order            -5.1141 united kingdom great britain northern
+        -11.9945        07 2014 meeting called order            -5.6974 great britain northern ireland united
+        -11.9945        07 2014 president floor representative          -5.8568 northern ireland united states america
+        -11.9945        10 20 meeting called order              -5.8568 britain northern ireland united states
+        -11.9945        10 20 new york president                -6.0258 sent signature member delegation concerned
+        -11.9945        10 2013 meeting called order            -6.0284 security council corrections submitted original
+        -11.9945        10 despite present quiet israeli                -6.0284 records security council corrections submitted
+        -11.9945        10 president like inform council                -6.0309 text printed official records security
+        -11.9945        10 year capacity building plan          -6.0309 printed official records security council
+        -11.9945        10 years security council äôs           -6.0309 official records security council corrections
+        -11.9945        1044 1996 send clear unambiguous                -6.0309 languages final text printed official
+        -11.9945        1062 contains text draft resolution             -6.0309 final text printed official records
+        -11.9945        1063 contains text draft resolution             -6.0439 record sent signature member delegation
+        -11.9945        11 15 new york president                -6.0439 incorporated copy record sent signature
+        -11.9945        11 25 adoption agenda agenda            -6.0439 copy record sent signature member
+        -11.9945        11 25 new york president                -6.0465 speeches delivered languages final text
+        -11.9945        11 35 new york president                -6.0465 delivered languages final text printed
+        -11.9945        11 50 new york president                -6.0623 security council concluded present stage
+        -11.9945        11 april 1996 charg äôaffaires          -6.0676 present stage consideration item agenda
+'''
+
 ''' Logistic Regression '''
+
 from sklearn.linear_model import LogisticRegression
 logreg = LogisticRegression(C=1e9)
 logreg.fit(train_dtm_n, y_train)
 y_pred_class = logreg.predict(test_dtm_n)
 print metrics.accuracy_score(y_test, y_pred_class_n) # 70%
 
-''' from sklearn tutorial '''
-'''
-X_train_counts = vect.fit_transform(X_train)
-X_train_counts.shape
 
-from sklearn.feature_extraction.text import TfidfTransformer
-tfidf_transformer = TfidfTransformer()
-X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
-X_train_tfidf.shape
-
-clf = MultinomialNB().fit(X_train_tfidf, y_train)
-
-new_words = ['acts of genocide', 'atrocities committed by']
-X_new_counts = vect.transform(new_words)
-X_new_tfidf = tfidf_transformer.transform(X_new_counts)
-
-predicted = clf.predict(X_new_tfidf)
-
-for word, category in zip(new_words, predicted):
-    print('%r => %s' % (word, y_pred_class_n))
-
-# clf.predict('acts of genocide')
-
-'''
 
 
 
