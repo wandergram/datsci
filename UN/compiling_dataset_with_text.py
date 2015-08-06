@@ -58,7 +58,7 @@ X_train.shape # 927
 X_test.shape # 309
 
 from sklearn.feature_extraction.text import CountVectorizer
-vect = CountVectorizer()
+vect = CountVectorizer() # ngram = 1
 train_dtm = vect.fit_transform(X_train)
 test_dtm = vect.transform(X_test)
 
@@ -116,6 +116,39 @@ metrics.accuracy_score(y_test, y_pred_class_n)
 # 74% with ngram_range 2,5, stopwords included
 # 70% with ngram_range 1,5, stopwords included
 
+print vect2.get_feature_names()[-50:]
+
+''' Logistic Regression '''
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression(C=1e9)
+logreg.fit(train_dtm_n, y_train)
+y_pred_class = logreg.predict(test_dtm_n)
+print metrics.accuracy_score(y_test, y_pred_class_n) # 70%
+
+''' from sklearn tutorial '''
+'''
+X_train_counts = vect.fit_transform(X_train)
+X_train_counts.shape
+
+from sklearn.feature_extraction.text import TfidfTransformer
+tfidf_transformer = TfidfTransformer()
+X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
+X_train_tfidf.shape
+
+clf = MultinomialNB().fit(X_train_tfidf, y_train)
+
+new_words = ['acts of genocide', 'atrocities committed by']
+X_new_counts = vect.transform(new_words)
+X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+
+predicted = clf.predict(X_new_tfidf)
+
+for word, category in zip(new_words, predicted):
+    print('%r => %s' % (word, y_pred_class_n))
+
+# clf.predict('acts of genocide')
+
+'''
 
 
 
