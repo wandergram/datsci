@@ -160,6 +160,43 @@ print show_most_informative_features(vect2, nb)
         -11.9945        11 april 1996 charg äôaffaires          -6.0676 present stage consideration item agenda
 '''
 
+# Other option, also from Stack Overflow
+# Run with Class 0 first (soft action)
+def most_informative_feature_for_class(vectorizer, classifier,  n=10):
+    labelid = list(classifier.classes_).index(0)
+    feature_names = vectorizer.get_feature_names()
+    topn = sorted(zip(classifier.coef_[labelid], feature_names))[-n:]
+
+    for coef, feat in topn:
+        print feat, coef
+
+print most_informative_feature_for_class(vect2, nb)
+
+'''
+printed official records security council -6.03094476782
+text printed official records security -6.03094476782
+records security council corrections submitted -6.02837737231
+security council corrections submitted original -6.02837737231
+sent signature member delegation concerned -6.02581655145
+britain northern ireland united states -5.85679705735
+northern ireland united states america -5.85679705735
+great britain northern ireland united -5.6974147915
+united kingdom great britain northern -5.11414002925
+kingdom great britain northern ireland -5.11208664044
+'''
+
+# Run with Class 1
+''' this produces an error
+def most_informative_feature_for_class(vectorizer, classifier,  n=10):
+    feature_names = vectorizer.get_feature_names()
+    topn = sorted(zip(classifier.coef_[1], feature_names))[-n:]
+
+    for coef, feat in topn:
+        print feat, coef
+        
+print most_informative_feature_for_class(vect2, nb)
+'''
+
 ''' Logistic Regression '''
 
 from sklearn.linear_model import LogisticRegression
