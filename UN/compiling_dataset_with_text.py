@@ -186,7 +186,8 @@ kingdom great britain northern ireland -5.11208664044
 '''
 
 # Run with Class 1
-''' this produces an error
+# this produces an error
+'''
 def most_informative_feature_for_class(vectorizer, classifier,  n=10):
     feature_names = vectorizer.get_feature_names()
     topn = sorted(zip(classifier.coef_[1], feature_names))[-n:]
