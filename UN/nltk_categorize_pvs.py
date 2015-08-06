@@ -79,6 +79,7 @@ classifier = nbc.train(train_set)
 print nltk.classify.accuracy(classifier, test_set) # .87 - ?!?!?!
 classifier.show_most_informative_features(20)
 
+# for word_features.keys()[:100]
 '''
 Most Informative Features
               immunities = True           interv : soft_a =      4.4 : 1.0
