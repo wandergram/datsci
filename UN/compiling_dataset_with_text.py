@@ -7,10 +7,10 @@ Created on Tue Aug  4 22:05:54 2015
 
 import glob
 
-# working dir: meeting_records_clean_final
+# working dir: UN/
 # read all files in directory into a list, where 1 file = 1 list element
 list_of_meetings = []
-for filename in glob.glob('*.txt'):
+for filename in glob.glob('corpus/meeting_records_clean_final/*.txt'):
      with open(filename, 'r') as f:
          list_of_meetings.append(f.read())
          f.close()
